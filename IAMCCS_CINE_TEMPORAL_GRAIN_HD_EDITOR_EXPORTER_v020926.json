@@ -1,0 +1,590 @@
+{
+  "id": "d688c314-a230-4c70-a9f4-iamccsgrainhd",
+  "revision": 0,
+  "last_node_id": 10,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "IAMCCS_shotboarder_aud+vid_exporter_PRO",
+      "pos": [
+        1730,
+        35
+      ],
+      "size": [
+        640,
+        1000
+      ],
+      "flags": {
+        "resizable": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 6
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "cine_linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        },
+        {
+          "name": "output_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "rtx_frames",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "title": "A5 · IAMCCS EXPORTER · embedded source audio is preserved",
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "c3ed60b7d7f0b8c6b942ef458475490326d03874",
+        "Node name for S&R": "IAMCCS_shotboarder_aud+vid_exporter_PRO",
+        "cnr_id": "iamccs-nodes"
+      },
+      "widgets_values": [
+        "audio_input",
+        "IAMCCS/FilmGrain/EXISTING_VIDEO_MASTER",
+        "h264_mp4",
+        "aac_320",
+        "trim_to_video",
+        24,
+        13,
+        true,
+        true,
+        false,
+        "VSR Medium",
+        "Keep Ratio",
+        2,
+        2,
+        1920,
+        1080,
+        "8",
+        0,
+        "16:9",
+        "Center Crop (Fill)",
+        "",
+        "{}",
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "audio_source_mode": "audio_input",
+        "filename_prefix": "IAMCCS/FilmGrain/EXISTING_VIDEO_MASTER",
+        "video_profile": "h264_mp4",
+        "audio_profile": "aac_320",
+        "audio_sync": "trim_to_video",
+        "frame_rate_override": 24,
+        "video_quality": 13,
+        "embed_metadata": true,
+        "write_sidecar": true,
+        "rtx_enabled": false,
+        "rtx_mode": "VSR Medium",
+        "rtx_resize_type": "Keep Ratio",
+        "rtx_scale": 2,
+        "rtx_megapixels": 2,
+        "rtx_width": 1920,
+        "rtx_height": 1080,
+        "rtx_divisible_by": "8",
+        "rtx_device": 0,
+        "rtx_ratio_preset": "16:9",
+        "rtx_resize_method": "Center Crop (Fill)",
+        "master_audio_file": "",
+        "metadata_json": "{}",
+        "editor_audio_edl_json": "",
+        "Shotboarder Pro Export": ""
+      },
+      "color": "#162023",
+      "bgcolor": "#0b0f10",
+      "shape": 1
+    },
+    {
+      "id": 1,
+      "type": "LoadVideo",
+      "pos": [
+        40,
+        110
+      ],
+      "size": [
+        377.4927734375,
+        294.20411783854166
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "slot_index": 0,
+          "links": [
+            1
+          ]
+        }
+      ],
+      "title": "A1 · LOAD AN EXISTING VIDEO · audio is preserved",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "R22D_VIDEO_EDITOR_MASTER_00002.mp4",
+        "image"
+      ],
+      "widgets_values_named": {
+        "file": "R22D_VIDEO_EDITOR_MASTER_00002.mp4",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 4,
+      "type": "CreateVideo",
+      "pos": [
+        1192.6388049655498,
+        265.9722175598145
+      ],
+      "size": [
+        485.13828125,
+        150
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 3
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          },
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "slot_index": 0,
+          "links": [
+            6
+          ]
+        }
+      ],
+      "title": "A4 · REBUILD VIDEO · grained frames + original audio + original fps",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24,
+        "auto",
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "fps": 24,
+        "bit_depth": "auto",
+        "color_space": "sRGB"
+      }
+    },
+    {
+      "id": 2,
+      "type": "GetVideoComponents",
+      "pos": [
+        39.78033079940833,
+        480.75364842684905
+      ],
+      "size": [
+        433.0484375,
+        122.77777777777806
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "slot_index": 1,
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "slot_index": 2,
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "bit_depth",
+          "type": "COMBO",
+          "slot_index": 3,
+          "links": []
+        },
+        {
+          "name": "color_space",
+          "type": "COMBO",
+          "slot_index": 4,
+          "links": []
+        }
+      ],
+      "title": "A2 · DEMUX VIDEO · frames / untouched audio / source fps",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "GetVideoComponents"
+      }
+    },
+    {
+      "id": 10,
+      "type": "Label (rgthree)",
+      "pos": [
+        -1183.176755934825,
+        -608.3594301815696
+      ],
+      "size": [
+        5847.94921875,
+        200
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "IAMCCS_CINE-TEMPORAL-GRAIN-4K + EXPORTER - V020926",
+      "properties": {
+        "fontSize": 200,
+        "fontFamily": "Arial",
+        "fontColor": "#ffffff",
+        "textAlign": "left",
+        "backgroundColor": "transparent",
+        "padding": 0,
+        "borderRadius": 0,
+        "angle": 0
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 9,
+      "type": "Label (rgthree)",
+      "pos": [
+        253.40483674679714,
+        -359.872895347926
+      ],
+      "size": [
+        1945.1171875,
+        200
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "patreon.com/IAMCCS",
+      "properties": {
+        "fontSize": 200,
+        "fontFamily": "Arial",
+        "fontColor": "red",
+        "textAlign": "left",
+        "backgroundColor": "transparent",
+        "padding": 0,
+        "borderRadius": 0,
+        "angle": 0
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 3,
+      "type": "IAMCCS_CineTemporalFilmGrain4K",
+      "pos": [
+        578.5306386970286,
+        92.43148995590764
+      ],
+      "size": [
+        572.6954983181425,
+        585
+      ],
+      "flags": {
+        "resizable": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "grain_map",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": []
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "slot_index": 2,
+          "links": []
+        }
+      ],
+      "title": "A3 · GRAIN LAB · OPEN VIDEO is preview-only / IMAGE input is render truth",
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "c3ed60b7d7f0b8c6b942ef458475490326d03874",
+        "Node name for S&R": "IAMCCS_CineTemporalFilmGrain4K",
+        "cnr_id": "iamccs-nodes"
+      },
+      "widgets_values": [
+        "custom_box_values",
+        "soft_light_luma",
+        0.3,
+        0.35,
+        0.56,
+        0.17,
+        0.94,
+        1.58,
+        1.08,
+        1,
+        0,
+        0,
+        ""
+      ],
+      "widgets_values_named": {
+        "preset": "custom_box_values",
+        "blend_method": "soft_light_luma",
+        "strength": 0.3,
+        "grain_size_4k_px": 0.35,
+        "temporal_persistence": 0.56,
+        "chroma_amount": 0.17,
+        "shadow_response": 0.94,
+        "midtone_response": 1.58,
+        "highlight_response": 1.08,
+        "seed": 1,
+        "control_after_generate": 0,
+        "frame_start": 0,
+        "Temporal Grain Lab": ""
+      },
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "VIDEO"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      2,
+      1,
+      4,
+      1,
+      "AUDIO"
+    ],
+    [
+      4,
+      2,
+      2,
+      4,
+      2,
+      "FLOAT"
+    ],
+    [
+      5,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      4,
+      0,
+      5,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "A · EXISTING VIDEO → GRAIN → IAMCCS EXPORTER · ACTIVE DEMO",
+      "bounding": [
+        0,
+        0,
+        2410,
+        1060
+      ],
+      "color": "#8a6a31",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.654545454545456,
+      "offset": [
+        169.24410884442756,
+        203.27617883557932
+      ]
+    },
+    "frontendVersion": "1.51.9",
+    "iamccs_package": {
+      "schema": "iamccs.cine.temporal_grain_demo",
+      "schema_version": 1,
+      "edition": "HD_EDITOR_EXISTING_VIDEO_AND_GENERATION_EXPORTER",
+      "created": "2026-08-29",
+      "license": "GPL-3.0-or-later",
+      "truth": "Grain processes IMAGE frames only. AUDIO bypasses the grain and is embedded once by CreateVideo before IAMCCS Exporter."
+    },
+    "iamccs_annotations_multi": {
+      "version": 2,
+      "graphs": {
+        "37a48176-eeb0-431b-81a1-197239974de0": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "widthDraw": 7,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        }
+      }
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
